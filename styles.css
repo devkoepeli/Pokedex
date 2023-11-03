@@ -11,11 +11,14 @@ body {
 .container {
     display: flex;
     justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
     max-width: 1250px;
+    margin: 0 auto;
     padding: 2rem;
 }
 
-#pokedex {
+#pokemon {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -23,7 +26,7 @@ body {
     align-items: center;
     width: 260px;
     height: 200px;
-    border-radius: 0.5rem;
+    border-radius: 1.5rem;
     box-shadow: 0 0 14px rgba(0, 0, 0, 0.14);
     padding: 1rem;
     background-color: lightsalmon;
@@ -31,7 +34,7 @@ body {
     transition: all .25s ease;
 }
 
-#pokedex:hover {
+#pokemon:hover {
     background-color: rgb(248, 128, 80);
 }
 
@@ -43,10 +46,84 @@ body {
 }
 
 #pokemon-img-container {
-    width: 150px;
+    width: 9.5rem;
 }
 
 .pokemon-img {
     width: 100%;
     display: block;
+}
+
+#modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    -webkit-backdrop-filter: blur(0.5rem);
+    backdrop-filter: blur(0.5rem);
+}
+
+.pokedex-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pokedex-details {
+    position: relative;
+    z-index: 2;
+    background-color: lightsalmon;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+    
+}
+
+.pokedex-title {
+    color: white;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.14);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 5rem;
+}
+
+.pokedex-img-container {
+    position: absolute;
+    bottom: 4.5rem;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 75%;
+}
+
+.pokedex-img {
+    width: 100%;
+    display: block;
+}
+
+.pokedex-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    background-color: white;
+    padding: 2.5rem 1rem;
+    border-radius: 1.5rem;
+}
+
+.pokedex-info-title {
+    font-weight: bold;
+    color: black;
+}
+
+.pokedex-info-row {
+    display: flex;
+    gap: 3rem;
+    color: black;
 }
