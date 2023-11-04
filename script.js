@@ -34,7 +34,10 @@ function openModal(index) {
     let modal = document.getElementById('modal');
     modal.style.display = 'block';
     renderPokedex(index);
-    modal.onclick = closeModal;
+    modal.addEventListener('click', function(event) {
+        // console.log(event.target); // überprüfe um welches Element es sich handelt beim click
+        closeModal(event); // das click event wird der Funktion übergeben
+    });
 }
 
 
@@ -44,8 +47,8 @@ function renderPokedex(index) {
     const imagePokemon = pokemon['sprites']['front_default'];
     const heightPokemon = pokemon['height'];
     document.getElementById('modal').innerHTML = `
-        <div class="pokedex-container">
-            <div class="pokedex-details">
+        <div class="pokedex-container" id="pokedex-container">
+            <div class="pokedex-details" id="pokedex-content">
                 <h2 class="pokedex-title">${namePokemon}</h2>
                 <div class="pokedex-img-container">
                     <img class="pokedex-img" src="${imagePokemon}" alt="">
@@ -64,10 +67,15 @@ function renderPokedex(index) {
 }
 
 
-function closeModal() {
+function closeModal(event) {
     let modal = document.getElementById('modal');
-    modal.innerHTML = '';
-    modal.style.display = 'none';
+    let pokedexContainer = document.getElementById('pokedex-container');
+
+    // überprüfe ob auf den Hintergrund geclickt wurde
+    if (event.target === modal || event.target === pokedexContainer) { // ist das ziel des clicks dasselbe Element, auf das geclickt wurde
+        modal.innerHTML = '';
+        modal.style.display = 'none';
+    }
 }
 
 
