@@ -96,7 +96,7 @@ body {
 
 .pokedex-img-container {
     position: absolute;
-    bottom: 4.5rem;
+    bottom: 6rem;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -120,10 +120,10 @@ body {
 .pokedex-info-title {
     font-weight: bold;
     color: black;
+    text-align: start;
+    padding-bottom: 0.5rem;
 }
 
-.pokedex-info-row {
-    display: flex;
-    gap: 3rem;
+.pokedex-info-table {
     color: black;
 }

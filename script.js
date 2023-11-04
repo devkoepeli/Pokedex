@@ -46,6 +46,8 @@ function renderPokedex(index) {
     const namePokemon = pokemon['name'].charAt(0).toUpperCase() + pokemon['name'].slice(1);
     const imagePokemon = pokemon['sprites']['front_default'];
     const heightPokemon = pokemon['height'];
+    const weightPokemon = pokemon['weight'];
+    const movePokemon = pokemon['moves'][0]['move']['name'];
     document.getElementById('modal').innerHTML = `
         <div class="pokedex-container" id="pokedex-container">
             <div class="pokedex-details" id="pokedex-content">
@@ -54,12 +56,23 @@ function renderPokedex(index) {
                     <img class="pokedex-img" src="${imagePokemon}" alt="">
                 </div>
                 <div class="pokedex-info">
-                    <span class="pokedex-info-title">About</span>
-                    <div class="pokedex-info-row">
-                        <span>Height</span>
-                        <span>${heightPokemon}</span>
-                    </div>
-                    <span class="pokedex-info-title">Breeding</span>
+                    <table class="pokedex-info-table">
+                        <tr>
+                            <th class="pokedex-info-title">About</th>
+                        </tr>
+                        <tr>
+                            <td>Height</td>
+                            <td>${heightPokemon} cm</td>
+                        </tr>
+                        <tr>
+                            <td>Weight</td>
+                            <td>${weightPokemon} kg</td>
+                        </tr>
+                        <tr>
+                            <td>Move</td>
+                            <td>${movePokemon}</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
