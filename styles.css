@@ -9,13 +9,46 @@ body {
 }
 
 .container {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.main-heading {
+    font-size: 3rem;
+    text-align: center;
+    margin: 0;
+    padding-bottom: 1.8rem;
+    font-weight: 600;
+}
+
+.input-container {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 2rem;
+}
+
+.search-input {
+    font-family: inherit;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: white;
+    padding: 0.5rem;
+    border: 0.1rem solid gray;
+    border-radius: 0.2rem;
+    font-size: 1rem;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: lightsalmon;
+}
+
+.container-cards {
     display: flex;
     justify-content: center;
     gap: 1.5rem;
     flex-wrap: wrap;
-    max-width: 1250px;
-    margin: 0 auto;
-    padding: 2rem;
 }
 
 #pokemon {

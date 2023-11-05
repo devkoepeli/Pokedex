@@ -6,7 +6,7 @@ let pokemonNames = [
 ];
 
 
-let currentPokemon = [];
+let pokemonJSON = [];
 
 
 async function getPokemon() {
@@ -14,8 +14,8 @@ async function getPokemon() {
         const url = `https://pokeapi.co/api/v2/pokemon/${pokemonNames[i]}`;
         const response = await fetch(url);
         const responseAsJSON = await response.json();
-        currentPokemon.push(responseAsJSON);
-        renderPokemon(currentPokemon, i);
+        pokemonJSON.push(responseAsJSON);
+        renderPokemon(i);
     }
 }
 
@@ -23,10 +23,10 @@ async function getPokemon() {
 document.addEventListener('DOMContentLoaded', getPokemon);
 
 
-function renderPokemon(currentPokemon, i) {
-    let name = currentPokemon[i]['name'].charAt(0).toUpperCase() + currentPokemon[i]['name'].slice(1);
-    let image = currentPokemon[i]['sprites']['front_default'];
-    document.getElementById('content').innerHTML += pokemonHTML(name, image, i);
+function renderPokemon(i) {
+    let currentName = pokemonJSON[i]['name'].charAt(0).toUpperCase() + pokemonJSON[i]['name'].slice(1);
+    let currentImage = pokemonJSON[i]['sprites']['front_default'];
+    document.getElementById('content').innerHTML += pokemonHTML(currentName, currentImage, i);
 }
 
 
@@ -42,7 +42,7 @@ function openModal(index) {
 
 
 function renderPokedex(index) {
-    let pokemon = currentPokemon[index];
+    let pokemon = pokemonJSON[index];
     const namePokemon = pokemon['name'].charAt(0).toUpperCase() + pokemon['name'].slice(1);
     const imagePokemon = pokemon['sprites']['front_default'];
     const heightPokemon = pokemon['height'];
@@ -66,7 +66,7 @@ function renderPokedex(index) {
                         </tr>
                         <tr>
                             <td>Weight</td>
-                            <td>${weightPokemon} kg</td>
+                            <td>${weightPokemon} g</td>
                         </tr>
                         <tr>
                             <td>Move</td>
@@ -88,6 +88,21 @@ function closeModal(event) {
     if (event.target === modal || event.target === pokedexContainer) { // ist das ziel des clicks dasselbe Element, auf das geclickt wurde
         modal.innerHTML = '';
         modal.style.display = 'none';
+    }
+}
+
+
+function searchPokemon() {
+    let search = document.getElementById('search').value;
+    search = search.toLowerCase();
+    let content = document.getElementById('content');
+    content.innerHTML = '';
+
+    for (let i = 0; i < pokemonNames.length; i++) {
+        const pokemonName = pokemonNames[i]; // by checking each name in the array we make sure it renders immediately the pokemon
+        if (pokemonName.includes(search)) {
+            renderPokemon(i); // passing the current i of the loop
+        }
     }
 }
 
