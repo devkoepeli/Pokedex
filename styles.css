@@ -128,7 +128,7 @@ body {
 .pokedex-details {
     position: relative;
     /* z-index: 2; */
-    background-color: lightsalmon;
+    background-color: transparent;
     border-radius: 1.5rem;
     overflow: hidden;
     width: 20rem;
