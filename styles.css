@@ -51,23 +51,19 @@ body {
     flex-wrap: wrap;
 }
 
-#pokemon {
+.pokemon {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
     width: 260px;
-    height: 200px;
+    height: 242px;
     border-radius: 1.5rem;
     box-shadow: 0 0 14px rgba(0, 0, 0, 0.14);
-    padding: 1rem;
-    background-color: lightsalmon;
+    padding: 1.25rem 1.25rem 0.5rem 1.25rem;
+    background-color: transparent;
     cursor: pointer;
     transition: all .25s ease;
 }
 
-#pokemon:hover {
+.pokemon:hover {
     background-color: rgb(248, 128, 80);
 }
 
@@ -75,19 +71,37 @@ body {
     margin: 0;
     color: white;
     text-shadow: 0 0 2px rgba(0, 0, 0, 0.14);
-    text-align: center;
 }
 
 #pokemon-img-container {
-    width: 9.5rem;
+    display: flex;
+    justify-content: end;
 }
 
 .pokemon-img {
-    width: 100%;
+    width: 9.5rem;
     display: block;
 }
 
-#modal {
+.pokemon-number {
+    position: absolute;
+    top: 1.4rem;
+    right: 1.25rem;
+    color: white;
+}
+
+.pokemon-element {
+    display: inline-block;
+    padding: 0.25rem 1rem;
+    margin-top: 0.5rem;
+    border-radius: 1rem;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.2);
+    font-size: 1rem;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.modal {
     display: none;
     position: fixed;
     z-index: 99;
@@ -98,6 +112,10 @@ body {
     background-color: rgba(0, 0, 0, 0.7);
     -webkit-backdrop-filter: blur(0.5rem);
     backdrop-filter: blur(0.5rem);
+}
+
+.d-block {
+    display: block;
 }
 
 .pokedex-container {
@@ -113,10 +131,7 @@ body {
     background-color: lightsalmon;
     border-radius: 1.5rem;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
     width: 20rem;
-    
 }
 
 .pokedex-title {
@@ -124,7 +139,24 @@ body {
     text-shadow: 0 0 2px rgba(0, 0, 0, 0.14);
     padding-left: 1rem;
     padding-right: 1rem;
-    padding-bottom: 7rem;
+}
+
+.pokedex-type {
+    display: inline-block;
+    padding: 0.25rem 1rem;
+    margin-left: 1rem;
+    border-radius: 1rem;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.2);
+    font-size: 1rem;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.pokedex-number {
+    position: absolute;
+    top: 1.6rem;
+    right: 1rem;
+    color: white;
 }
 
 .pokedex-img-container {
@@ -147,6 +179,7 @@ body {
     gap: 0.75rem;
     background-color: white;
     padding: 2.5rem 1rem;
+    margin-top: 7rem;
     border-radius: 1.5rem;
 }
 
@@ -159,4 +192,82 @@ body {
 
 .pokedex-info-table {
     color: black;
+}
+
+.o-hidden {
+    overflow: hidden;
+}
+
+/* alle pokemon Typ Farben */ 
+
+.normal {
+    background-color: #A8A878;
+}
+
+.fire {
+    background-color: #F08030;
+}
+
+.water {
+    background-color: #6890F0;
+}
+
+.electric {
+    background-color: #F8D030;
+}
+
+.grass {
+    background-color: #78C850;
+}
+
+.ice {
+    background-color: #98D8D8;
+}
+
+.fighting {
+    background-color: #C03028;
+}
+
+.poison {
+    background-color: #A040A0;
+}
+
+.ground {
+    background-color: #E0C068;
+}
+
+.flying {
+    background-color: #A890F0;
+}
+
+.psychic {
+    background-color: #F85888;
+}
+
+.bug {
+    background-color: #A8B820;
+}
+
+.rock {
+    background-color: #B8A038;
+}
+
+.ghost {
+    background-color: #705898;
+}
+
+.steel {
+    background-color: #B8B8D0;
+}
+
+.dragon {
+    background-color: #7038F8;
+}
+
+.dark {
+    background-color: #705848;
+}
+
+.fairy {
+    background-color: #EE99AC;
 }
