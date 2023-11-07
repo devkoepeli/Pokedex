@@ -13,7 +13,10 @@ async function getPokemon() {
 }
 
 
-document.addEventListener('DOMContentLoaded', getPokemon);
+document.addEventListener('DOMContentLoaded', async function() {
+    await getPokemon();
+    initAmountOfPokemons() // nachdem rendern die Anzahl an gerenderten Pokemons speichern für searchPokemon()
+});
 
 
 function renderPokemon(i) {
@@ -113,12 +116,18 @@ function searchPokemon() {
     let content = document.getElementById('content');
     content.innerHTML = '';
 
-    for (let i = 0; i < pokemonNames.length; i++) {
+    for (let i = 0; i < amountOfRenderedPokemons; i++) { 
+        // amountOfRenderedPokemons, damit genau die aktuell Anzahl an gerenderten Pokemons und nicht immer die Gesamtzahl (60) genommen wird
         const pokemonName = pokemonNames[i]; // by checking each name in the array we make sure it renders immediately the pokemon
         if (pokemonName.includes(search)) { // if the element at the position i contains searchvalue (true) render the element
             renderPokemon(i); // passing the current i of the loop
         }
     }
+}
+
+
+function initAmountOfPokemons() {
+    amountOfRenderedPokemons = document.querySelectorAll('.pokemon').length;
 }
 
 
@@ -136,6 +145,7 @@ function loadMore(pageIndex) {
     for (let i = startRange; i < endRange; i++) {
         renderPokemon(i);
     }
+    initAmountOfPokemons() // nachdem mehr gerendert wurde, muss die Anzahl an Pokemons erneut gespeichert werden
 }
 
 

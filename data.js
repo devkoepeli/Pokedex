@@ -40,3 +40,6 @@ let pokemonJSON = [];
 
 
 let currentPage = 1;
+
+
+let amountOfRenderedPokemons = 0;
