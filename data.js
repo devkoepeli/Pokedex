@@ -37,3 +37,6 @@ let pokemonTypes = [
 
 
 let pokemonJSON = [];
+
+
+let currentPage = 1;

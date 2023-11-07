@@ -1,10 +1,14 @@
 async function getPokemon() {
+    const cardsPerPage = 20;
     for (let i = 0; i < pokemonNames.length; i++) {
         const url = `https://pokeapi.co/api/v2/pokemon/${pokemonNames[i]}`;
         const response = await fetch(url);
         const responseAsJSON = await response.json();
         pokemonJSON.push(responseAsJSON);
-        renderPokemon(i);
+
+        if(i < cardsPerPage) { // sicherstellen, dass nur die ersten 20 pokemon geladen werden.
+            renderPokemon(i);
+        }
     }
 }
 
@@ -16,6 +20,7 @@ function renderPokemon(i) {
     let currentName = pokemonJSON[i]['name'].charAt(0).toUpperCase() + pokemonJSON[i]['name'].slice(1);
     let currentImage = pokemonJSON[i]['sprites']['front_default'];
     let currentType = pokemonJSON[i]['types'][0]['type']['name'];
+
     document.getElementById('content').innerHTML += pokemonHTML(currentName, currentImage, currentType, i);
     colorElement(i);
 }
@@ -27,9 +32,8 @@ function colorElement(index) {
 
     for (let i = 0; i < pokemonTypes.length; i++) {
         const type = pokemonTypes[i]['type'];
-        const color = pokemonTypes[i]['color'];
         if (pokemonType === type) {
-            pokemonCard.style.backgroundColor = color;
+            pokemonCard.classList.add(`${type}`);
             return;
         }
     }
@@ -114,6 +118,31 @@ function searchPokemon() {
         if (pokemonName.includes(search)) { // if the element at the position i contains searchvalue (true) render the element
             renderPokemon(i); // passing the current i of the loop
         }
+    }
+}
+
+
+function loadMore(pageIndex) {
+    const cardIncrease = 20;
+    const cardLimit = 60;
+    const pageCount = cardLimit / cardIncrease; // wie viele Seiten haben wir maximal? --> 3
+    currentPage += pageIndex; // wir sind bei Beginn bei der Seite 1 und mit jedem Click wird die 1 addiert für jede weitere "seite"
+
+    disableButton(pageCount, currentPage);
+
+    const startRange = (currentPage - 1) * cardIncrease; // onclick: 1 * 20
+    const endRange = currentPage === pageCount ? cardLimit : currentPage * cardIncrease; // prüfen ob currentPage gleich pageCount ist, endrange auf 60 begrenzen, weil max 60 Karten
+
+    for (let i = startRange; i < endRange; i++) {
+        renderPokemon(i);
+    }
+}
+
+
+function disableButton(pageCount, currentPage) {
+    if (pageCount === currentPage) {
+        document.getElementById('button').disabled = true;
+        document.getElementById('button').classList.add('d-none');
     }
 }
 

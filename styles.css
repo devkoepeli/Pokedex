@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: white;
     margin: 0;
@@ -61,10 +65,6 @@ body {
     background-color: transparent;
     cursor: pointer;
     transition: all .25s ease;
-}
-
-.pokemon:hover {
-    background-color: rgb(248, 128, 80);
 }
 
 #pokemon-name {
@@ -196,6 +196,32 @@ body {
 
 .o-hidden {
     overflow: hidden;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
+}
+
+.button {
+    border: 0.08rem solid lightgray;
+    background-color: rgb(255, 160, 122);
+    padding: 0.75rem 1rem;
+    color: white;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.14);
+    box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.button:hover {
+    text-decoration: underline;
+}
+
+.d-none {
+    display: none;
 }
 
 /* alle pokemon Typ Farben */ 
