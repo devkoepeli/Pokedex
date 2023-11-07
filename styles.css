@@ -179,7 +179,7 @@ body {
     gap: 0.75rem;
     background-color: white;
     padding: 2.5rem 1rem;
-    margin-top: 7rem;
+    margin-top: 3rem;
     border-radius: 1.5rem;
 }
 
@@ -222,6 +222,30 @@ body {
 
 .d-none {
     display: none;
+}
+
+.arrow-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 4rem 0.5rem 0rem 0.5rem;
+}
+
+.arrow-icon-left {
+    display: inline-block;
+    fill: white;
+    width: 45px;
+    cursor: pointer;
+    position: relative;
+    z-index: 5;
+}
+
+.arrow-icon-right {
+    display: inline-block;
+    fill: white;
+    width: 45px;
+    cursor: pointer;
+    position: relative;
+    z-index: 5;
 }
 
 /* alle pokemon Typ Farben */ 
