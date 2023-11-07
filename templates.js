@@ -16,10 +16,15 @@ function pokedexHTML(index) {
     const pokemon = pokemonJSON[index];
     const namePokemon = pokemon['name'].charAt(0).toUpperCase() + pokemon['name'].slice(1);
     const typePokemon = pokemon['types'][0]['type']['name']; // gibt den Typen des angeclickten Pokemons zurück z.B. "fire"
-    const imagePokemon = pokemon['sprites']['front_default'];
+    const imagePokemon = pokemon['sprites']['other']['official-artwork']['front_default'];
     const heightPokemon = pokemon['height'];
     const weightPokemon = pokemon['weight'];
     const movePokemon = pokemon['moves'][0]['move']['name'];
+
+    const statsHP = pokemon['stats'][0]['base_stat']; 
+    const statsAttack = pokemon['stats'][1]['base_stat']; 
+    const statsDefense = pokemon['stats'][2]['base_stat']; 
+    const statsSpeed = pokemon['stats'][5]['base_stat']; 
     return `
         <div class="pokedex-container" id="pokedex-container">
             <div class="pokedex-details ${typePokemon}" id="pokedex-content">
@@ -42,10 +47,11 @@ function pokedexHTML(index) {
                     <img class="pokedex-img" src="${imagePokemon}" alt="">
                 </div>
                 <div class="pokedex-info">
-                    <table class="pokedex-info-table">
-                        <tr>
-                            <th class="pokedex-info-title">About</th>
-                        </tr>
+                    <div class="pokedex-info-title-container">   
+                        <span id="about-title" class="pokedex-info-title c-black">About</span>
+                        <span id="stats-title" class="pokedex-info-title c-grey">Stats</span>
+                    </div>
+                    <table id="pokedex-about" class="pokedex-about-table">
                         <tr>
                             <td>Height</td>
                             <td>${heightPokemon} cm</td>
@@ -57,6 +63,24 @@ function pokedexHTML(index) {
                         <tr>
                             <td>Move</td>
                             <td>${movePokemon}</td>
+                        </tr>
+                    </table>
+                    <table id="pokedex-stats" class="pokedex-stats-table d-none">
+                        <tr>
+                            <td>HP</td>
+                            <td>${statsHP}</td>
+                        </tr>
+                        <tr>
+                            <td>Attack</td>
+                            <td>${statsAttack}</td>
+                        </tr>
+                        <tr>
+                            <td>Defense</td>
+                            <td>${statsDefense}</td>
+                        </tr>
+                        <tr>
+                            <td>Speed</td>
+                            <td>${statsSpeed}</td>
                         </tr>
                     </table>
                 </div>

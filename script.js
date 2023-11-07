@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
 function renderPokemon(i) {
     let currentName = pokemonJSON[i]['name'].charAt(0).toUpperCase() + pokemonJSON[i]['name'].slice(1);
-    let currentImage = pokemonJSON[i]['sprites']['front_default'];
+    let currentImage = pokemonJSON[i]['sprites']['other']['official-artwork']['front_default'];
     let currentType = pokemonJSON[i]['types'][0]['type']['name'];
 
     document.getElementById('content').innerHTML += pokemonHTML(currentName, currentImage, currentType, i);
@@ -58,6 +58,7 @@ function openModal(index) {
 
 function renderPokedex(index) {
     document.getElementById('modal').innerHTML = pokedexHTML(index);
+    initChangePokedexInfo();
 }
 
 
@@ -141,4 +142,39 @@ function navigatePokedex(index) {
         index = amountOfRenderedPokemons - 1;
     }
     renderPokedex(index);
+}
+
+
+function changePokedexInfo(element) {
+    const pokedexStats = document.getElementById(`pokedex-stats`);
+    const pokedexAbout = document.getElementById(`pokedex-about`);
+    const statsTitle = document.getElementById('stats-title');
+    const aboutTitle =  document.getElementById('about-title');
+
+    if (element === statsTitle && statsTitle.classList.contains('c-grey')) {
+        pokedexStats.classList.remove('d-none');
+        pokedexAbout.classList.add('d-none');
+        statsTitle.classList.add('c-black');
+        statsTitle.classList.remove('c-grey');
+        aboutTitle.classList.remove('c-black');
+        aboutTitle.classList.add('c-grey');
+    } else if (element === aboutTitle && aboutTitle.classList.contains('c-grey')) {
+        pokedexStats.classList.add('d-none');
+        pokedexAbout.classList.remove('d-none');
+        statsTitle.classList.remove('c-black');
+        statsTitle.classList.add('c-grey');
+        aboutTitle.classList.add('c-black');
+        aboutTitle.classList.remove('c-grey');
+    }
+}
+
+
+function initChangePokedexInfo() {
+    document.getElementById('stats-title').addEventListener('click', function() {
+        changePokedexInfo(this);
+    });
+
+    document.getElementById('about-title').addEventListener('click', function() {
+        changePokedexInfo(this);
+    });
 }
