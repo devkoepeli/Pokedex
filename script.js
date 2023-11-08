@@ -86,6 +86,7 @@ function searchPokemon() {
     search = search.toLowerCase();
     let content = document.getElementById('content');
     content.innerHTML = '';
+    document.getElementById('button').classList.add('d-none');
 
     for (let i = 0; i < amountOfRenderedPokemons; i++) { 
         // amountOfRenderedPokemons, damit genau die aktuell Anzahl an gerenderten Pokemons und nicht immer die Gesamtzahl (60) genommen wird
@@ -93,6 +94,10 @@ function searchPokemon() {
         if (pokemonName.includes(search)) { // if the element at the position i contains searchvalue (true) render the element
             renderPokemon(i); // passing the current i of the loop
         }
+    }
+
+    if (!search) {
+        document.getElementById('button').classList.remove('d-none');
     }
 }
 
